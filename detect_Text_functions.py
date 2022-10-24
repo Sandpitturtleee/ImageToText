@@ -1,13 +1,35 @@
 import cv2
 import pytesseract
 
+character_list = []
+lvl_list = []
+nick_list = []
+uid_list = []
+bow_name_list = []
+artifact_list = []
+refinement_list = []
+bow_lvl_list = []
+fr_lvl_list = []
+aa_lvl_list = []
+e_lvl_list = []
+q_lvl_list = []
+hp_stat_list = []
+atk_stat_list = []
+def_stat_list = []
+em_stat_list = []
+cr_stat_list = []
+cd_stat_list = []
+er_stat_list = []
+
+
+# cv2.imshow('thresh', image)
 
 def detect_character(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng', config='--psm 6 --oem 3')
     character = str(data)
-    print(character)
-    # cv2.imshow('thresh', image)
+    character_list.append(character)
+    return character_list
 
 
 def detect_lvl(image, number):
@@ -15,217 +37,196 @@ def detect_lvl(image, number):
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     lvl = int(data)
-    print(lvl)
     if lvl < 10:
-        print("lvl" + str(number))
-        print(lvl)
-    # cv2.imshow('thresh', image)
+        lvl_list.append(data + " " + "lvl" + str(number))
+    else:
+        lvl_list.append(lvl)
+    return lvl_list
 
 
 def detect_nick(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng', config='--psm 6 --oem 3')
     nick = str(data)
-    print(nick)
-    # cv2.imshow('thresh', image)
+    nick_list.append(nick)
+    return nick_list
 
-
-def detect_id(image, number):
+def detect_uid(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    # print(data)
-    # cv2.imshow('thresh', image)
     uid = data
-    print(uid)
     if len(uid) != 10:
-        print("uid" + str(number))
-        print(uid)
-
+        uid_list.append(data + " " + "uid" + str(number))
+    else:
+        uid_list.append(uid)
+    return uid_list
 
 def detect_bow_name(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng', config='--psm 6 --oem 3')
-    print(data)
-    # cv2.imshow('thresh', image)
+    bow_name = str(data)
+    bow_name_list.append(bow_name)
+    return bow_name_list
 
 
-def detect_set(image, number):
+def detect_artifact(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng', config='--psm 6 --oem 3')
-    print(data)
-    # cv2.imshow('thresh', image)
+    artifact = str(data)
+    artifact_list.append(artifact)
+    return artifact_list
 
 
 def detect_refinement(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=12345')
-    # print(data)
     refinement = int(data)
-    print(refinement)
     if refinement < 1 or refinement > 5:
-        print("refinement" + str(number))
-        print(refinement)
-    # cv2.imshow('thresh', image)
+        refinement_list.append(data + " " + "refinement" + str(number))
+    else:
+        refinement_list.append(refinement)
+    return refinement_list
 
 
 def detect_bow_lvl(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    # print(data)
     bow_lvl = int(data)
-    print(bow_lvl)
     if bow_lvl < 10:
-        print("bow_lvl" + str(number))
-        print(bow_lvl)
-    cv2.imshow('thresh', image)
-    cv2.waitKey()
+        bow_lvl_list.append(data + " " + "bow_lvl" + str(number))
+    else:
+        bow_lvl_list.append(bow_lvl)
+    return bow_lvl_list
+
 
 
 def detect_fr_lvl(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    # print(data)
     fr_lvl = int(data)
-    print(fr_lvl)
     if fr_lvl < 1:
-        print("fr_lvl" + str(number))
-        print(fr_lvl)
-    # cv2.imshow('thresh', image)
+        fr_lvl_list.append(data + " " + "fr_lvl" + str(number))
+    else:
+        fr_lvl_list.append(fr_lvl)
+    return fr_lvl_list
 
 
 def detect_aa_lvl(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    # print(data)
-    cv2.imshow('thresh', image)
-    cv2.waitKey()
     aa_lvl = int(data)
-    print(aa_lvl)
     if aa_lvl < 1 or aa_lvl > 10:
-        print("aa_lvl" + str(number))
-        print(aa_lvl)
+        aa_lvl_list.append(data + " " + "aa_lvl" + str(number))
+    else:
+        aa_lvl_list.append(aa_lvl)
+    return aa_lvl_list
 
 
 def detect_e_lvl(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    # print(data)
     e_lvl = int(data)
-    print(e_lvl)
     if e_lvl < 1 or e_lvl > 13:
-        print("e_lvl" + str(number))
-        print(e_lvl)
-    # cv2.imshow('thresh', image)
+        e_lvl_list.append(data + " " + "e_lvl" + str(number))
+    else:
+        e_lvl_list.append(e_lvl)
+    return e_lvl_list
 
 
 def detect_q_lvl(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    # print(data)
     q_lvl = int(data)
-    print(q_lvl)
     if q_lvl < 1 or q_lvl > 13:
-        print("q_lvl" + str(number))
-        print(q_lvl)
-    # cv2.imshow('thresh', image)
+        q_lvl_list.append(data + " " + "q_lvl" + str(number))
+    else:
+        q_lvl_list.append(q_lvl)
+    return q_lvl_list
 
 
 def detect_hp_stat(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    # print(data)
     hp_stat = int(data)
     if hp_stat < 10000:
-        print("hp_stat" + str(number))
-        print(hp_stat)
+        hp_stat_list.append(data + " " + "hp_stat" + str(number))
     else:
-        print(hp_stat)
-    # cv2.imshow('thresh', image)
+        hp_stat_list.append(hp_stat)
+    return hp_stat_list
 
 
 def detect_atk_stat(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    # print(data)
     atk_stat = int(data)
     if atk_stat < 1000:
-        print("atk_stat" + str(number))
-        print(atk_stat)
+        atk_stat_list.append(data + " " + "atk_stat" + str(number))
     else:
-        print(atk_stat)
-    # cv2.imshow('thresh', image)
-    # cv2.waitKey(5000)
+        atk_stat_list.append()
+    return atk_stat_list
 
 
 def detect_def_stat(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    # print(data)
-    # cv2.imshow('thresh', image)
     def_stat = int(data)
-    print(def_stat)
     if def_stat < 100:
-        print("def_stat" + str(number))
-        print(def_stat)
+        def_stat_list.append(data + " " + "def_stat" + str(number))
+    else:
+        def_stat_list.append(def_stat)
+    return def_stat_list
 
 
 def detect_em_stat(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    # print(data)
     em_stat = int(data)
-    print(em_stat)
-    # cv2.imshow('thresh', image)
+    em_stat_list.append(em_stat)
+    return em_stat_list
 
 
 def detect_cr_stat(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789.')
-    # print(data)
     cr_stat = float(data)
     if cr_stat < 10:
-        print("cr_stat" + str(number))
-        print(cr_stat)
+        cr_stat_list.append(data + " " + "cr_stat" + str(number))
     else:
-        print(cr_stat)
-    # cv2.imshow('thresh', image)
+        cr_stat_list.append(cr_stat)
+    return cr_stat_list
 
 
 def detect_cd_stat(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789.')
-    # print(data)
     cd_stat = float(data)
     if cd_stat < 50:
-        print("cd_stat" + str(number))
-        print(cd_stat)
+        cd_stat_list.append(data + " " + "cd_stat" + str(number))
     else:
-        print(cd_stat)
-    # cv2.imshow('thresh', image)
+        cd_stat_list.append(cd_stat)
+    return cd_stat_list
 
 
 def detect_er_stat(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789.')
-    # print(data)
     er_stat = float(data)
     if er_stat < 100:
-        print("er_stat" + str(number))
-        print(er_stat)
+        er_stat_list.append(data + " " + "er_stat" + str(number))
     else:
-        print(er_stat)
-    # cv2.imshow('thresh', image)
+        er_stat_list.append(er_stat)
+    return er_stat_list
