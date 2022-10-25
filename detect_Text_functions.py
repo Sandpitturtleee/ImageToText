@@ -51,6 +51,7 @@ def detect_nick(image, number):
     nick_list.append(nick)
     return nick_list
 
+
 def detect_uid(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
@@ -61,6 +62,7 @@ def detect_uid(image, number):
     else:
         uid_list.append(uid)
     return uid_list
+
 
 def detect_bow_name(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
@@ -100,7 +102,6 @@ def detect_bow_lvl(image, number):
     else:
         bow_lvl_list.append(bow_lvl)
     return bow_lvl_list
-
 
 
 def detect_fr_lvl(image, number):
@@ -171,7 +172,7 @@ def detect_atk_stat(image, number):
     if atk_stat < 1000:
         atk_stat_list.append(data + " " + "atk_stat" + str(number))
     else:
-        atk_stat_list.append()
+        atk_stat_list.append(atk_stat)
     return atk_stat_list
 
 

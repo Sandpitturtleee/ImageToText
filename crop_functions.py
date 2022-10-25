@@ -43,7 +43,7 @@ def crop(image, number):
     for x in range(len(file_paths_strings)):
         cv2.imwrite(file_paths_strings[x], file_names_strings[x])
 
-    #detect_character(file_names_strings[0], number)
+    detect_character(file_names_strings[0], number)
     detect_lvl(file_names_strings[1], number)
     detect_nick(file_names_strings[2], number)
     detect_uid(file_names_strings[3], number)
@@ -56,16 +56,11 @@ def crop(image, number):
     # detect_e_lvl(file_names_strings[10], number)
     # detect_q_lvl(file_names_strings[11], number)
     detect_hp_stat(file_names_strings[12], number)
-    #detect_atk_stat(file_names_strings[13], number)
+    detect_atk_stat(file_names_strings[13], number)
     detect_def_stat(file_names_strings[14], number)
     detect_em_stat(file_names_strings[15], number)
     detect_cr_stat(file_names_strings[16], number)
     detect_cd_stat(file_names_strings[17], number)
     detect_er_stat(file_names_strings[18], number)
-
-    character_list1 = detect_atk_stat(file_names_strings[13], number)
-    print(len(character_list1))
-    for x in range(len(character_list1)):
-        print(character_list1[x])
 
 
