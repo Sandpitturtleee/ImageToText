@@ -38,7 +38,7 @@ def detect_lvl(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     lvl = int(data)
     if lvl < 10:
-        lvl_list.append(data + " " + "lvl" + str(number))
+        lvl_list.append("lvl" + str(number))
     else:
         lvl_list.append(lvl)
     return lvl_list
@@ -58,7 +58,7 @@ def detect_uid(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     uid = data
     if len(uid) != 10:
-        uid_list.append(data + " " + "uid" + str(number))
+        uid_list.append("uid" + str(number))
     else:
         uid_list.append(uid)
     return uid_list
@@ -86,7 +86,7 @@ def detect_refinement(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=12345')
     refinement = int(data)
     if refinement < 1 or refinement > 5:
-        refinement_list.append(data + " " + "refinement" + str(number))
+        refinement_list.append("refinement" + str(number))
     else:
         refinement_list.append(refinement)
     return refinement_list
@@ -98,7 +98,7 @@ def detect_bow_lvl(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     bow_lvl = int(data)
     if bow_lvl < 10:
-        bow_lvl_list.append(data + " " + "bow_lvl" + str(number))
+        bow_lvl_list.append("bow_lvl" + str(number))
     else:
         bow_lvl_list.append(bow_lvl)
     return bow_lvl_list
@@ -110,7 +110,7 @@ def detect_fr_lvl(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     fr_lvl = int(data)
     if fr_lvl < 1:
-        fr_lvl_list.append(data + " " + "fr_lvl" + str(number))
+        fr_lvl_list.append("fr_lvl" + str(number))
     else:
         fr_lvl_list.append(fr_lvl)
     return fr_lvl_list
@@ -122,7 +122,7 @@ def detect_aa_lvl(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     aa_lvl = int(data)
     if aa_lvl < 1 or aa_lvl > 10:
-        aa_lvl_list.append(data + " " + "aa_lvl" + str(number))
+        aa_lvl_list.append("aa_lvl" + str(number))
     else:
         aa_lvl_list.append(aa_lvl)
     return aa_lvl_list
@@ -134,7 +134,7 @@ def detect_e_lvl(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     e_lvl = int(data)
     if e_lvl < 1 or e_lvl > 13:
-        e_lvl_list.append(data + " " + "e_lvl" + str(number))
+        e_lvl_list.append("e_lvl" + str(number))
     else:
         e_lvl_list.append(e_lvl)
     return e_lvl_list
@@ -146,7 +146,7 @@ def detect_q_lvl(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     q_lvl = int(data)
     if q_lvl < 1 or q_lvl > 13:
-        q_lvl_list.append(data + " " + "q_lvl" + str(number))
+        q_lvl_list.append("q_lvl" + str(number))
     else:
         q_lvl_list.append(q_lvl)
     return q_lvl_list
@@ -158,7 +158,7 @@ def detect_hp_stat(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     hp_stat = int(data)
     if hp_stat < 10000:
-        hp_stat_list.append(data + " " + "hp_stat" + str(number))
+        hp_stat_list.append("hp_stat" + str(number))
     else:
         hp_stat_list.append(hp_stat)
     return hp_stat_list
@@ -170,7 +170,7 @@ def detect_atk_stat(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     atk_stat = int(data)
     if atk_stat < 1000:
-        atk_stat_list.append(data + " " + "atk_stat" + str(number))
+        atk_stat_list.append("atk_stat" + str(number))
     else:
         atk_stat_list.append(atk_stat)
     return atk_stat_list
@@ -182,7 +182,7 @@ def detect_def_stat(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     def_stat = int(data)
     if def_stat < 100:
-        def_stat_list.append(data + " " + "def_stat" + str(number))
+        def_stat_list.append("def_stat" + str(number))
     else:
         def_stat_list.append(def_stat)
     return def_stat_list
@@ -203,7 +203,7 @@ def detect_cr_stat(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789.')
     cr_stat = float(data)
     if cr_stat < 10:
-        cr_stat_list.append(data + " " + "cr_stat" + str(number))
+        cr_stat_list.append("cr_stat" + str(number))
     else:
         cr_stat_list.append(cr_stat)
     return cr_stat_list
@@ -215,7 +215,7 @@ def detect_cd_stat(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789.')
     cd_stat = float(data)
     if cd_stat < 50:
-        cd_stat_list.append(data + " " + "cd_stat" + str(number))
+        cd_stat_list.append("cd_stat" + str(number))
     else:
         cd_stat_list.append(cd_stat)
     return cd_stat_list
@@ -227,7 +227,7 @@ def detect_er_stat(image, number):
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789.')
     er_stat = float(data)
     if er_stat < 100:
-        er_stat_list.append(data + " " + "er_stat" + str(number))
+        er_stat_list.append("er_stat" + str(number))
     else:
         er_stat_list.append(er_stat)
     return er_stat_list

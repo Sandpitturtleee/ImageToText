@@ -5,7 +5,7 @@ from detect_Text_functions import *
 
 
 def crop(image, number):
-    folder_path = 'C:/Users/karol/Desktop/Studia/5 Semestr/Programowanie Wieloplatformowe w Qt/ImageToText/venv/images/New/'
+    folder_path = 'C:/Users/karol/Desktop/Studia/5 Semestr/Programowanie Wieloplatformowe w Qt/ImageToText/venv/Images/New/'
     extension_string = '.jpg'
     file_paths_strings = ["character", "lvl", "nick", "uid",
                           "bow_name", "artifact", "refinement", "bow_lvl",
