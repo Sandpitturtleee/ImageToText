@@ -1,9 +1,15 @@
 import os
+
+from PyQt5.QtCore import QRegExp
+from PyQt5.QtGui import QFont, QRegExpValidator
+
 from crop_functions import *
-from write_to_file_functions import *
+import sys
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton, QLineEdit, QLabel
+from write_to_file_functions import write_to_file2
 
 
-def combine1():
+def combine():
     pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
     path_to_images = "C:/Users/karol/Desktop/Studia/5 Semestr/Programowanie Wieloplatformowe w Qt/ImageToText/venv/Images/Base/"
 
@@ -17,10 +23,33 @@ def combine1():
             y = y + 1
 
 
-if __name__ == '__main__':
-    combine1()
+def combine_and_write():
+    combine()
     write_to_file2()
 
 
+class MainWindow(QMainWindow):
+
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle('Hello PyQt5')
+        self.setFixedSize(800, 600)
+
+        ## Buttons
+        self.btn1 = QPushButton('Detect errors', self)
+        self.btn1.setGeometry(300, 100,200,100)
+        self.btn1.clicked.connect(lambda: combine())
+
+        self.btn2 = QPushButton('Detect text and write to file', self)
+        self.btn2.setGeometry(300, 300,200,100)
+        self.btn2.clicked.connect(lambda: combine_and_write())
+
+        self.show()
 
 
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    sys.exit(app.exec())
+    # combine1()
+    # write_to_file2()

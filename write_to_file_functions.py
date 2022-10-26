@@ -35,8 +35,10 @@ def write_to_file1():
 # 2 Without a_stat. e_stat, q_stat values
 def write_to_file2():
     lists_len = len(character_list)
+    print("Write")
     for x in range(len(file_paths_strings_New)):
         file_paths_strings_New[x] = path_to_data + file_paths_strings_New[x] + ".txt"
         with open(file_paths_strings_New[x], 'w') as f:
             for y in range(lists_len):
                 f.write("%s\n" % data_lists_New[x][y])
+
