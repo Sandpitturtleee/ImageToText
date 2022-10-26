@@ -19,7 +19,8 @@ def combine1():
 
 if __name__ == '__main__':
     combine1()
-    write_to_file1()
+    write_to_file2()
+
 
 
 
