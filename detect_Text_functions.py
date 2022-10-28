@@ -1,28 +1,10 @@
 import cv2
 import pytesseract
 
-character_list = []
-lvl_list = []
-nick_list = []
-uid_list = []
-bow_name_list = []
-artifact_list = []
-refinement_list = []
-bow_lvl_list = []
-fr_lvl_list = []
-aa_lvl_list = []
-e_lvl_list = []
-q_lvl_list = []
-hp_stat_list = []
-atk_stat_list = []
-def_stat_list = []
-em_stat_list = []
-cr_stat_list = []
-cd_stat_list = []
-er_stat_list = []
+from variables import character_list, lvl_list, nick_list, uid_list, bow_name_list, artifact_list, refinement_list, \
+    bow_lvl_list, fr_lvl_list, aa_lvl_list, e_lvl_list, q_lvl_list, hp_stat_list, atk_stat_list, def_stat_list, \
+    em_stat_list, cr_stat_list, cd_stat_list, er_stat_list
 
-
-# cv2.imshow('thresh', image)
 
 def detect_character(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
