@@ -1,13 +1,27 @@
+import os
+
 import cv2
 import pytesseract
 
 import shutil
 
-from detect_Text_functions import *
+from detectText_Functions import *
 
-from variables import folder_path_new, extension_string_jpg, crop_values_matrix, folder_path, extension_string_png, \
-    data_lists_New, folder_path_base
-from write_to_file_functions import rename
+from variables import folder_path_new, extension_string_jpg, crop_values_matrix, extension_string_png, \
+    data_lists_New, folder_path_base, folder_path_errors
+
+
+def rename():
+    count = 1
+    for file_name in os.listdir(folder_path_base):
+        source = folder_path_base + file_name
+        destination = folder_path_base + "image" + str(count) + ".png"
+        os.rename(source, destination)
+        count += 1
+    print('All Files Renamed')
+    print('New Names are')
+    res = os.listdir(folder_path_base)
+    print(res)
 
 
 def crop_Enka_2Artifact(image, number):
@@ -31,7 +45,7 @@ def crop_Enka_2Artifact(image, number):
         file_names_strings[x] = file_names_strings[x] + str(number)
         file_names_strings[x] = image[crop_values_matrix[x][0]:crop_values_matrix[x][1],
                                 crop_values_matrix[x][2]:crop_values_matrix[x][3]]
-        #print(file_names_strings[x])
+        # print(file_names_strings[x])
 
     # Saving images
     for x in range(len(file_paths_strings)):
@@ -61,12 +75,13 @@ def crop_Enka_2Artifact(image, number):
         except ValueError:
             print("image" + str(number))
             old_file_path = folder_path_base + "image" + str(number) + extension_string_png
-            new_file_path = folder_path + "Errors/image" + str(number) + extension_string_png
+            new_file_path = folder_path_errors + "image" + str(number) + extension_string_png
             shutil.move(old_file_path, new_file_path)
 
             for f in range(len(data_lists_New)):
                 data_lists_New[f].clear()
             rename()
+
     detect_text()
 
 
