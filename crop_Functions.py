@@ -1,8 +1,4 @@
 import os
-
-import cv2
-import pytesseract
-
 import shutil
 
 from detectText_Functions import *

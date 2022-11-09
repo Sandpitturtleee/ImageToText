@@ -28,9 +28,6 @@ def write_to_file2():
                 f.write("%s\n" % data_lists_New[x][y])
 
 
-
-
-
 def combine():
     pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
     path_to_images = "C:/Users/karol/Desktop/Studia/5 Semestr/Programowanie Wieloplatformowe w Qt/ImageToText/venv/Images/Base/"

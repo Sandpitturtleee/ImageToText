@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QPushButton
 
-from crop_Functions import *
 from writeToFile_Functions import *
 
 from PyQt5.QtWidgets import QPushButton
@@ -21,10 +20,11 @@ class Worker(QObject):
 class DetectTextWindow(QWidget):
     def __init__(self):
         super().__init__()
+        self.detectTextButton = None
+        self.MainWindow = None
+        self.returnButton = None
         self.worker = None
         self.thread = None
-        self.btn2 = None
-        self.btn1 = None
         self.setupUi()
 
     def setupUi(self):
@@ -32,17 +32,21 @@ class DetectTextWindow(QWidget):
         self.setFixedSize(800, 600)
 
         # Buttons
-        self.btn1 = QPushButton('Detect text and write to file', self)
-        self.btn1.setGeometry(300, 100, 200, 100)
-        self.btn1.clicked.connect(self.runLongTask)
+        self.detectTextButton = QPushButton('Detect text and write to file', self)
+        self.detectTextButton.setGeometry(300, 100, 200, 100)
+        self.detectTextButton.clicked.connect(self.runLongTask)
+
+        self.returnButton = QPushButton('Return', self)
+        self.returnButton.setGeometry(300, 400, 200, 100)
+        self.returnButton.clicked.connect(self.toggle_window1)
 
     def toggle_window1(self, checked):
         self.hide()
-        if self.window1.isVisible():
-            self.window1.hide()
+        if self.MainWindow.isVisible():
+            self.MainWindow.hide()
 
         else:
-            self.window1.show()
+            self.MainWindow.show()
 
     def runLongTask(self):
         # Step 2: Create a QThread object
@@ -60,8 +64,8 @@ class DetectTextWindow(QWidget):
         self.thread.start()
 
         # Final resets
-        self.btn1.setEnabled(False)
+        self.detectTextButton.setEnabled(False)
         self.thread.finished.connect(
-            lambda: self.btn1.setEnabled(True)
+            lambda: self.detectTextButton.setEnabled(True)
         )
 

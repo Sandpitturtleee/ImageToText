@@ -21,10 +21,9 @@ class Worker(QObject):
 class DetectErrorsWindow(QWidget):
     def __init__(self):
         super().__init__()
+        self.detectErrorsButton = None
         self.worker = None
         self.thread = None
-        self.btn2 = None
-        self.btn1 = None
         self.setupUi()
 
     def setupUi(self):
@@ -32,9 +31,9 @@ class DetectErrorsWindow(QWidget):
         self.setFixedSize(800, 600)
 
         # Buttons
-        self.btn1 = QPushButton('Detect errors', self)
-        self.btn1.setGeometry(300, 100, 200, 100)
-        self.btn1.clicked.connect(self.runLongTask)
+        self.detectErrorsButton = QPushButton('Detect errors', self)
+        self.detectErrorsButton.setGeometry(300, 100, 200, 100)
+        self.detectErrorsButton.clicked.connect(self.runLongTask)
 
     def toggle_window1(self, checked):
         self.hide()
@@ -60,8 +59,8 @@ class DetectErrorsWindow(QWidget):
         self.thread.start()
 
         # Final resets
-        self.btn1.setEnabled(False)
+        self.detectErrorsButton.setEnabled(False)
         self.thread.finished.connect(
-            lambda: self.btn1.setEnabled(True)
+            lambda: self.detectErrorsButton.setEnabled(True)
         )
 

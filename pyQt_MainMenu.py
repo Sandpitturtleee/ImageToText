@@ -4,15 +4,15 @@ from pyQt_DetectErrors import DetectErrorsWindow
 from PyQt5.QtWidgets import QMainWindow, QPushButton
 
 
-class Window(QMainWindow):
+class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.detectErrorsWindow = DetectErrorsWindow()
         self.detectTextWindow = DetectTextWindow()
         self.worker = None
         self.thread = None
-        self.btn2 = None
-        self.btn1 = None
+        self.detectErrorsButton = None
+        self.detectTextButton = None
         self.setupUi()
 
     def setupUi(self):
@@ -20,13 +20,13 @@ class Window(QMainWindow):
         self.setFixedSize(800, 600)
 
         # Buttons
-        self.btn1 = QPushButton('Detect errors', self)
-        self.btn1.setGeometry(300, 100, 200, 100)
-        self.btn1.clicked.connect(self.toggle_detectErrorsWindow)
+        self.detectErrorsButton = QPushButton('Detect errors', self)
+        self.detectErrorsButton.setGeometry(300, 100, 200, 100)
+        self.detectErrorsButton.clicked.connect(self.toggle_detectErrorsWindow)
 
-        self.btn2 = QPushButton('Detect text and write to file', self)
-        self.btn2.setGeometry(300, 300, 200, 100)
-        self.btn2.clicked.connect(self.toggle_detectTextWindow)
+        self.detectTextButton = QPushButton('Detect text and write to file', self)
+        self.detectTextButton.setGeometry(300, 300, 200, 100)
+        self.detectTextButton.clicked.connect(self.toggle_detectTextWindow)
 
     def toggle_detectErrorsWindow(self, checked):
         self.hide()
