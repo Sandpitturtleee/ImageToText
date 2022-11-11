@@ -6,7 +6,7 @@ from detectText_Functions import *
 
 # 1 With a_stat. e_stat, q_stat values
 from variables import file_paths_strings, path_to_data, data_lists, file_paths_strings_New, data_lists_New, folder_path, \
-    folder_path_base
+    folder_path_Enka_2
 
 
 def write_to_file1():
@@ -30,11 +30,10 @@ def write_to_file2():
 
 def combine():
     pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-    path_to_images = "C:/Users/karol/Desktop/Studia/5 Semestr/Programowanie Wieloplatformowe w Qt/ImageToText/venv/Images/Base/"
-    for root, dirs, file_names in os.walk(path_to_images):
+    for root, dirs, file_names in os.walk(folder_path_Enka_2):
         number = 1
         for file_name in file_names:
-            image = cv2.imread(path_to_images + file_name, 0)
+            image = cv2.imread(folder_path_Enka_2 + file_name, 0)
             dim = (1927, 804)
             resized = cv2.resize(image, dim)
             crop_Enka_2Artifact(resized, number)

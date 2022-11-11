@@ -4,7 +4,7 @@ from pyQt_DetectErrors import DetectErrorsWindow
 from PyQt5.QtWidgets import QMainWindow, QPushButton
 
 
-class MainWindow(QMainWindow):
+class MainMenuWindow(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.detectErrorsWindow = DetectErrorsWindow()
@@ -29,7 +29,6 @@ class MainWindow(QMainWindow):
         self.detectTextButton.clicked.connect(self.toggle_detectTextWindow)
 
     def toggle_detectErrorsWindow(self, checked):
-        self.hide()
         if self.detectErrorsWindow.isVisible():
             self.detectErrorsWindow.hide()
 
@@ -37,7 +36,6 @@ class MainWindow(QMainWindow):
             self.detectErrorsWindow.show()
 
     def toggle_detectTextWindow(self, checked):
-        self.hide()
         if self.detectTextWindow.isVisible():
             self.detectTextWindow.hide()
 

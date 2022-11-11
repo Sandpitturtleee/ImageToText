@@ -13,7 +13,8 @@ class Worker(QObject):
 
     def run(self):
         """Long-running task."""
-        rename()
+        rename(1)
+        #rename(2)
         combine()
         self.finished.emit()
 
@@ -21,6 +22,7 @@ class Worker(QObject):
 class DetectErrorsWindow(QWidget):
     def __init__(self):
         super().__init__()
+        self.returnButton = None
         self.detectErrorsButton = None
         self.worker = None
         self.thread = None
@@ -35,13 +37,12 @@ class DetectErrorsWindow(QWidget):
         self.detectErrorsButton.setGeometry(300, 100, 200, 100)
         self.detectErrorsButton.clicked.connect(self.runLongTask)
 
-    def toggle_window1(self, checked):
-        self.hide()
-        if self.window1.isVisible():
-            self.window1.hide()
+        self.returnButton = QPushButton('Return', self)
+        self.returnButton.setGeometry(300, 400, 200, 100)
+        self.returnButton.clicked.connect(self.toggle_MainMenu)
 
-        else:
-            self.window1.show()
+    def toggle_MainMenu(self, checked):
+        self.hide()
 
     def runLongTask(self):
         # Step 2: Create a QThread object

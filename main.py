@@ -1,11 +1,12 @@
 import sys
+
 from PyQt5.QtWidgets import QApplication
-from pyQt_MainMenu import Window
+from pyQt_MainMenu import MainMenuWindow
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    win = Window()
+    win = MainMenuWindow()
     win.show()
     sys.exit(app.exec())
 

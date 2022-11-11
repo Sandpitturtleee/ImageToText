@@ -20,8 +20,8 @@ class Worker(QObject):
 class DetectTextWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.detectTextButton = None
         self.MainWindow = None
+        self.detectTextButton = None
         self.returnButton = None
         self.worker = None
         self.thread = None
@@ -38,15 +38,10 @@ class DetectTextWindow(QWidget):
 
         self.returnButton = QPushButton('Return', self)
         self.returnButton.setGeometry(300, 400, 200, 100)
-        self.returnButton.clicked.connect(self.toggle_window1)
+        self.returnButton.clicked.connect(self.toggle_MainMenu)
 
-    def toggle_window1(self, checked):
+    def toggle_MainMenu(self, checked):
         self.hide()
-        if self.MainWindow.isVisible():
-            self.MainWindow.hide()
-
-        else:
-            self.MainWindow.show()
 
     def runLongTask(self):
         # Step 2: Create a QThread object
