@@ -14,8 +14,8 @@ class Worker(QObject):
     def run(self):
         """Long-running task."""
         rename(1)
-        #rename(2)
         combine()
+        clear_lists()
         self.finished.emit()
 
 

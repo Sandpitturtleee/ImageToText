@@ -1,5 +1,6 @@
 import os
 import shutil
+from natsort import natsorted
 
 from detectText_Functions import *
 
@@ -8,17 +9,19 @@ from variables import folder_path_new, extension_string_jpg, crop_values_Enka2Ar
 
 
 def rename(folder_number):
+
     if folder_number == 1:
         count = 1
-        for file_name in os.listdir(folder_path_Enka_2):
+        for file_name in natsorted(os.listdir(folder_path_Enka_2)):
             source = folder_path_Enka_2 + file_name
             destination = folder_path_Enka_2 + "image" + str(count) + ".png"
+            print(file_name)
+            print(source)
+            print(destination)
             os.rename(source, destination)
             count += 1
-        print('All Files Renamed')
         print('New Names are')
-        res = os.listdir(folder_path_Enka_2)
-        print(res)
+        print(natsorted(os.listdir(folder_path_Enka_2)))
     elif folder_number == 2:
         count = 1
         for file_name in os.listdir(folder_path_Enka_1):
@@ -95,11 +98,10 @@ def crop_Enka_2Artifact(image, number):
             detect_cd_stat(file_names_strings[17], number)
             detect_er_stat(file_names_strings[18], number)
         except ValueError:
-            print("image" + str(number))
+            print("imageError" + str(number))
             old_file_path = folder_path_Enka_2 + "image" + str(number) + extension_string_png
             new_file_path = folder_path_errors + "image" + str(number) + extension_string_png
             shutil.move(old_file_path, new_file_path)
-            clear_lists()
-            rename(1)
 
     detect_text()
+

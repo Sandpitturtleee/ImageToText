@@ -1,4 +1,5 @@
 import os
+from natsort import natsorted
 
 from crop_Functions import crop_Enka_2Artifact
 from detectText_Functions import *
@@ -31,6 +32,9 @@ def write_to_file2():
 def combine():
     pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
     for root, dirs, file_names in os.walk(folder_path_Enka_2):
+        file_names = natsorted(file_names)
+        print("Elo")
+        print(file_names)
         number = 1
         for file_name in file_names:
             image = cv2.imread(folder_path_Enka_2 + file_name, 0)
