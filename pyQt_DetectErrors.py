@@ -13,7 +13,6 @@ class Worker(QObject):
 
     def run(self):
         """Long-running task."""
-        rename(1)
         combine()
         clear_lists()
         self.finished.emit()
