@@ -47,7 +47,7 @@ def combine():
         file_names = natsorted(file_names)
         for file_name in file_names:
             image = cv2.imread(folder_path_G_Wizard + file_name, 0)
-            dim = (1927, 804)
+            dim = (1000, 825)
             resized = cv2.resize(image, dim)
             crop_Enka_G_Wizard(resized, number)
             number = number + 1

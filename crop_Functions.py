@@ -5,7 +5,8 @@ from natsort import natsorted
 from detectText_Functions import *
 
 from variables import folder_path_new, extension_string_jpg, crop_values_Enka2Artifact, extension_string_png, \
-    data_lists_New, folder_path_Enka_2, folder_path_errors, folder_path_Enka_1, folder_path_G_Wizard
+    data_lists_New, folder_path_Enka_2, folder_path_errors, folder_path_Enka_1, folder_path_G_Wizard, \
+    crop_values_G_Wizard
 
 
 def rename(folder_number):
@@ -106,8 +107,8 @@ def crop_Enka_G_Wizard(image, number):
     for x in range(len(file_names_strings)):
         file_names_strings[x] = file_names_strings[x] + str(number)
         #print(file_names_strings[x])
-        file_names_strings[x] = image[crop_values_Enka2Artifact[x][0]:crop_values_Enka2Artifact[x][1],
-                                crop_values_Enka2Artifact[x][2]:crop_values_Enka2Artifact[x][3]]
+        file_names_strings[x] = image[crop_values_G_Wizard[x][0]:crop_values_G_Wizard[x][1],
+                                crop_values_G_Wizard[x][2]:crop_values_G_Wizard[x][3]]
 
     # Saving images
     for x in range(len(file_paths_strings)):
