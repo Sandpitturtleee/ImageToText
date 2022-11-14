@@ -173,7 +173,10 @@ def detect_em_stat(image, number):
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     em_stat = int(data)
-    data_lists[15].append(em_stat)
+    if em_stat < 10:
+        data_lists[15].append("em_stat" + str(number))
+    else:
+        data_lists[15].append(em_stat)
     return data_lists[15]
 
 

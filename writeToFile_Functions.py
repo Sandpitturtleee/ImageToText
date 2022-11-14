@@ -1,13 +1,13 @@
 import os
 from natsort import natsorted
 
-from crop_Functions import crop_Enka_2Artifact, rename, clear_lists, crop_Enka_G_Wizard
+from crop_Functions import crop_Enka_2Artifact, rename, clear_lists, crop_Enka_G_Wizard_1, crop_Enka_G_Wizard_2
 from detectText_Functions import *
 
 
 # 1 With a_stat. e_stat, q_stat values
 from variables import file_paths_strings, path_to_data, data_lists, file_paths_strings_New, data_lists_New, folder_path, \
-    folder_path_Enka_2, folder_path_G_Wizard
+    folder_path_Enka_2, folder_path_G_Wizard_1, folder_path_G_Wizard_2
 
 
 def write_to_file1():
@@ -17,7 +17,7 @@ def write_to_file1():
         with open(file_paths_strings[x], 'w') as f:
             for y in range(lists_len):
                 f.write("%s\n" % data_lists[x][y])
-
+    clear_lists()
 
 # 2 Without a_stat. e_stat, q_stat values
 def write_to_file2():
@@ -33,21 +33,32 @@ def write_to_file2():
 def combine():
     rename(1)
     rename(2)
+    rename(3)
     pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
     for root, dirs, file_names in os.walk(folder_path_Enka_2):
         file_names = natsorted(file_names)
         number = 1
         for file_name in file_names:
             image = cv2.imread(folder_path_Enka_2 + file_name, 0)
-            dim = (1927, 804)
+            dim = (1924, 802)
             resized = cv2.resize(image, dim)
             crop_Enka_2Artifact(resized, number)
             number = number + 1
-    for root, dirs, file_names in os.walk(folder_path_G_Wizard):
+
+    for root, dirs, file_names in os.walk(folder_path_G_Wizard_1):
         file_names = natsorted(file_names)
+        new_number = 1
         for file_name in file_names:
-            image = cv2.imread(folder_path_G_Wizard + file_name, 0)
-            dim = (1000, 825)
-            resized = cv2.resize(image, dim)
-            crop_Enka_G_Wizard(resized, number)
+            image = cv2.imread(folder_path_G_Wizard_1 + file_name, 0)
+            crop_Enka_G_Wizard_1(image, number, new_number)
             number = number + 1
+            new_number = new_number + 1
+
+    for root, dirs, file_names in os.walk(folder_path_G_Wizard_2):
+        file_names = natsorted(file_names)
+        new_number = 1
+        for file_name in file_names:
+            image = cv2.imread(folder_path_G_Wizard_2 + file_name, 0)
+            crop_Enka_G_Wizard_2(image, number, new_number)
+            number = number + 1
+            new_number = new_number + 1
