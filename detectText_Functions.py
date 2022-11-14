@@ -131,24 +131,22 @@ def detect_q_lvl(image, number):
         data_lists[11].append(q_lvl)
     return data_lists[11]
 
-
 def detect_hp_stat(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
-                                       config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    hp_stat = int(data)
+                                       config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789(')
+    hp_stat = int(data[:5])
     if hp_stat < 10000:
         data_lists[12].append("hp_stat" + str(number))
     else:
         data_lists[12].append(hp_stat)
     return data_lists[12]
 
-
 def detect_atk_stat(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
-                                       config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    atk_stat = int(data)
+                                       config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789(')
+    atk_stat = int(data[:4])
     if atk_stat < 1000:
         data_lists[13].append("atk_stat" + str(number))
     else:
@@ -159,8 +157,8 @@ def detect_atk_stat(image, number):
 def detect_def_stat(image, number):
     image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
     data = pytesseract.image_to_string(image, lang='eng',
-                                       config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    def_stat = int(data)
+                                       config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789(')
+    def_stat = int(data[:3])
     if def_stat < 100:
         data_lists[14].append("def_stat" + str(number))
     else:

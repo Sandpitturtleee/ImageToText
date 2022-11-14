@@ -35,6 +35,12 @@ def rename(folder_number):
             count += 1
 
 
+def delete_files():
+    for file_name in os.listdir(folder_path_new):
+        source = folder_path_new + file_name
+        os.remove(source)
+
+
 def clear_lists():
     for f in range(len(data_lists_New)):
         data_lists_New[f].clear()
