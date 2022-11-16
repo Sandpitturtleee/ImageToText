@@ -4,8 +4,8 @@ from natsort import natsorted
 
 from detectText_Functions import *
 
-from variables import folder_path_new, extension_string_jpg, crop_values_Enka2Artifact, extension_string_png, \
-    data_lists_New, folder_path_Enka_2, folder_path_errors, folder_path_Enka_1, folder_path_G_Wizard_1, \
+from variables import folder_path_new, jpg_extension, png_extension, crop_values_Enka2Artifact, \
+    image_data_new, folder_path_Enka_2, folder_path_errors, folder_path_Enka_1, folder_path_G_Wizard_1, \
     crop_values_G_Wizard_1, folder_path_G_Wizard_2, crop_values_G_Wizard_2
 
 
@@ -42,8 +42,8 @@ def delete_files():
 
 
 def clear_lists():
-    for f in range(len(data_lists_New)):
-        data_lists_New[f].clear()
+    for f in range(len(image_data_new)):
+        image_data_new[f].clear()
 
 
 def crop_Enka_2Artifact(image, number):
@@ -59,7 +59,7 @@ def crop_Enka_2Artifact(image, number):
                           "cr_stat", "cd_stat", "er_stat"]
     # Creating filepaths for output images
     for x in range(len(file_paths_strings)):
-        file_paths_strings[x] = folder_path_new + file_paths_strings[x] + str(number) + extension_string_jpg
+        file_paths_strings[x] = folder_path_new + file_paths_strings[x] + str(number) + jpg_extension
 
     # Creating names for cropped images and cropping
     for x in range(len(file_names_strings)):
@@ -94,8 +94,8 @@ def crop_Enka_2Artifact(image, number):
             detect_er_stat(file_names_strings[18], number)
         except ValueError:
             print("imageError" + str(number))
-            old_file_path = folder_path_Enka_2 + "image" + str(number) + extension_string_png
-            new_file_path = folder_path_errors + "image" + str(number) + extension_string_png
+            old_file_path = folder_path_Enka_2 + "image" + str(number) + png_extension
+            new_file_path = folder_path_errors + "image" + str(number) + png_extension
             shutil.move(old_file_path, new_file_path)
 
     detect_text()
@@ -114,7 +114,7 @@ def crop_Enka_G_Wizard_1(image, number, new_number):
                           "cr_stat", "cd_stat", "er_stat"]
     # Creating filepaths for output images
     for x in range(len(file_paths_strings)):
-        file_paths_strings[x] = folder_path_new + file_paths_strings[x] + str(number) + extension_string_jpg
+        file_paths_strings[x] = folder_path_new + file_paths_strings[x] + str(number) + jpg_extension
         #print(file_paths_strings[x])
 
     # Creating names for cropped images and cropping
@@ -152,8 +152,8 @@ def crop_Enka_G_Wizard_1(image, number, new_number):
             detect_er_stat(file_names_strings[18], number)
         except ValueError:
             print("imageError" + str(number))
-            old_file_path = folder_path_G_Wizard_1 + "image" + str(new_number) + extension_string_png
-            new_file_path = folder_path_errors + "image" + str(number) + extension_string_png
+            old_file_path = folder_path_G_Wizard_1 + "image" + str(new_number) + png_extension
+            new_file_path = folder_path_errors + "image" + str(number) + png_extension
             shutil.move(old_file_path, new_file_path)
 
     detect_text()
@@ -172,7 +172,7 @@ def crop_Enka_G_Wizard_2(image, number, new_number):
                           "cr_stat", "cd_stat", "er_stat"]
     # Creating filepaths for output images
     for x in range(len(file_paths_strings)):
-        file_paths_strings[x] = folder_path_new + file_paths_strings[x] + str(number) + extension_string_jpg
+        file_paths_strings[x] = folder_path_new + file_paths_strings[x] + str(number) + jpg_extension
 
     # Creating names for cropped images and cropping
     for x in range(len(file_names_strings)):
@@ -207,8 +207,8 @@ def crop_Enka_G_Wizard_2(image, number, new_number):
             detect_er_stat(file_names_strings[18], number)
         except ValueError:
             print("imageError" + str(number))
-            old_file_path = folder_path_G_Wizard_2 + "image" + str(new_number) + extension_string_png
-            new_file_path = folder_path_errors + "image" + str(number) + extension_string_png
+            old_file_path = folder_path_G_Wizard_2 + "image" + str(new_number) + png_extension
+            new_file_path = folder_path_errors + "image" + str(number) + png_extension
             shutil.move(old_file_path, new_file_path)
 
     detect_text()

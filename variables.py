@@ -1,21 +1,21 @@
-file_paths_strings = ["character", "lvl", "nick", "uid",
+file_paths = ["character", "lvl", "nick", "uid",
                       "bow_name", "artifact", "refinement", "bow_lvl",
                       "fr_lvl", "aa_lvl", "e_lvl", "q_lvl",
                       "hp_stat", "atk_stat", "def_stat", "em_stat",
                       "cr_stat", "cd_stat", "er_stat"]
-file_names_strings = ["character", "lvl", "nick", "uid",
+file_names = ["character", "lvl", "nick", "uid",
                       "bow_name", "artifact", "refinement", "bow_lvl",
                       "fr_lvl", "aa_lvl", "e_lvl", "q_lvl",
                       "hp_stat", "atk_stat", "def_stat", "em_stat",
                       "cr_stat", "cd_stat", "er_stat"]
 
-file_paths_strings_New = ["character", "lvl", "nick", "uid",
+file_paths_new = ["character", "lvl", "nick", "uid",
                           "bow_name", "artifact", "refinement", "bow_lvl",
                           "fr_lvl", "hp_stat", "atk_stat", "def_stat", "em_stat",
                           "cr_stat", "cd_stat", "er_stat"]
 
-path_to_data = "D:/projectFiles/Data/"
 folder_path = "D:/projectFiles/Images/"
+folder_path_data = "D:/projectFiles/Data/"
 folder_path_Enka_1 = "D:/projectFiles/Images/Enka_1/"
 folder_path_Enka_2 = "D:/projectFiles/Images/Enka2/"
 folder_path_G_Wizard_1 = "D:/projectFiles/Images/G_Wizard_1/"
@@ -24,41 +24,41 @@ folder_path_new = "D:/projectFiles/Images/New/"
 folder_path_errors = "D:/projectFiles/Images/Errors/"
 
 
-extension_string_jpg = '.jpg'
-extension_string_png = '.png'
+jpg_extension = '.jpg'
+png_extension = '.png'
 
 
-character_list = []
-lvl_list = []
-nick_list = []
-uid_list = []
-bow_name_list = []
-artifact_list = []
-refinement_list = []
-bow_lvl_list = []
-fr_lvl_list = []
-aa_lvl_list = []
-e_lvl_list = []
-q_lvl_list = []
-hp_stat_list = []
-atk_stat_list = []
-def_stat_list = []
-em_stat_list = []
-cr_stat_list = []
-cd_stat_list = []
-er_stat_list = []
+character = []
+lvl = []
+nick = []
+uid = []
+bow_name = []
+artifact_set = []
+refinement = []
+bow_lvl = []
+fr_lvl = []
+aa_lvl = []
+e_lvl = []
+q_lvl = []
+hp_stat = []
+atk_stat = []
+def_stat = []
+em_stat = []
+cr_stat = []
+cd_stat = []
+er_stat = []
 
-data_lists = [character_list, lvl_list, nick_list, uid_list,
-              bow_name_list, artifact_list, refinement_list, bow_lvl_list,
-              fr_lvl_list, aa_lvl_list, e_lvl_list, q_lvl_list,
-              hp_stat_list, atk_stat_list, def_stat_list,
-              em_stat_list,
-              cr_stat_list, cd_stat_list, er_stat_list]
+image_data = [character, lvl, nick, uid,
+              bow_name, artifact_set, refinement, bow_lvl,
+              fr_lvl, aa_lvl, e_lvl, q_lvl,
+              hp_stat, atk_stat, def_stat,
+              em_stat,
+              cr_stat, cd_stat, er_stat]
 
-data_lists_New = [character_list, lvl_list, nick_list, uid_list, bow_name_list, artifact_list, refinement_list,
-                  bow_lvl_list, fr_lvl_list, hp_stat_list, atk_stat_list,
-                  def_stat_list,
-                  em_stat_list, cr_stat_list, cd_stat_list, er_stat_list]
+image_data_new = [character, lvl, nick, uid, bow_name, artifact_set, refinement,
+                  bow_lvl, fr_lvl, hp_stat, atk_stat,
+                  def_stat,
+                  em_stat, cr_stat, cd_stat, er_stat]
 
 crop_values_Enka2Artifact = [[45, 80, 35, 160], [100, 125, 80, 120], [55, 80, 200, 315], [750, 780, 25, 190],
                              [40, 80, 915, 1300], [725, 795, 880, 1280], [145, 175, 920, 980], [140, 180, 1047, 1087],
