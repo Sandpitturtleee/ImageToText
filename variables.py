@@ -14,7 +14,6 @@ file_paths_new = ["character", "lvl", "nick", "uid",
                           "fr_lvl", "hp_stat", "atk_stat", "def_stat", "em_stat",
                           "cr_stat", "cd_stat", "er_stat"]
 
-folder_path = "D:/projectFiles/Images/"
 folder_path_data = "D:/projectFiles/Data/"
 folder_path_Enka_1 = "D:/projectFiles/Images/Enka_1/"
 folder_path_Enka_2 = "D:/projectFiles/Images/Enka2/"

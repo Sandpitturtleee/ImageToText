@@ -9,30 +9,13 @@ from variables import folder_path_new, jpg_extension, png_extension, crop_values
     crop_values_G_Wizard_1, folder_path_G_Wizard_2, crop_values_G_Wizard_2
 
 
-def rename(folder_number):
-    if folder_number == 1:
-        count = 1
-        for file_name in natsorted(os.listdir(folder_path_Enka_2)):
-            source = folder_path_Enka_2 + file_name
-            destination = folder_path_Enka_2 + "image" + str(count) + ".png"
-            os.rename(source, destination)
-            count += 1
-
-    elif folder_number == 2:
-        count = 1
-        for file_name in natsorted(os.listdir(folder_path_G_Wizard_1)):
-            source = folder_path_G_Wizard_1 + file_name
-            destination = folder_path_G_Wizard_1 + "image" + str(count) + ".png"
-            os.rename(source, destination)
-            count += 1
-
-    elif folder_number == 3:
-        count = 1
-        for file_name in natsorted(os.listdir(folder_path_G_Wizard_2)):
-            source = folder_path_G_Wizard_2 + file_name
-            destination = folder_path_G_Wizard_2 + "image" + str(count) + ".png"
-            os.rename(source, destination)
-            count += 1
+def rename_files(folder_path):
+    count = 1
+    for file_name in natsorted(os.listdir(folder_path)):
+        source = folder_path + file_name
+        destination = folder_path + "image" + str(count) + ".png"
+        os.rename(source, destination)
+        count += 1
 
 
 def delete_files():
@@ -46,169 +29,45 @@ def clear_lists():
         image_data_new[f].clear()
 
 
-def crop_Enka_2Artifact(image, number):
-    file_paths_strings = ["character", "lvl", "nick", "uid",
-                          "bow_name", "artifact", "refinement", "bow_lvl",
-                          "fr_lvl", "aa_lvl", "e_lvl", "q_lvl",
-                          "hp_stat", "atk_stat", "def_stat", "em_stat",
-                          "cr_stat", "cd_stat", "er_stat"]
-    file_names_strings = ["character", "lvl", "nick", "uid",
-                          "bow_name", "artifact", "refinement", "bow_lvl",
-                          "fr_lvl", "aa_lvl", "e_lvl", "q_lvl",
-                          "hp_stat", "atk_stat", "def_stat", "em_stat",
-                          "cr_stat", "cd_stat", "er_stat"]
-    # Creating filepaths for output images
-    for x in range(len(file_paths_strings)):
-        file_paths_strings[x] = folder_path_new + file_paths_strings[x] + str(number) + jpg_extension
-
-    # Creating names for cropped images and cropping
-    for x in range(len(file_names_strings)):
-        file_names_strings[x] = file_names_strings[x] + str(number)
-        file_names_strings[x] = image[crop_values_Enka2Artifact[x][0]:crop_values_Enka2Artifact[x][1],
-                                crop_values_Enka2Artifact[x][2]:crop_values_Enka2Artifact[x][3]]
-
-    # Saving images
-    for x in range(len(file_paths_strings)):
-        cv2.imwrite(file_paths_strings[x], file_names_strings[x])
-
-    def detect_text():
-        try:
-            detect_character(file_names_strings[0], number)
-            detect_lvl(file_names_strings[1], number)
-            detect_nick(file_names_strings[2], number)
-            detect_uid(file_names_strings[3], number)
-            detect_bow_name(file_names_strings[4], number)
-            detect_artifact(file_names_strings[5], number)
-            detect_refinement(file_names_strings[6], number)
-            detect_bow_lvl(file_names_strings[7], number)
-            detect_fr_lvl(file_names_strings[8], number)
-            # detect_aa_lvl(file_names_strings[9], number)
-            # detect_e_lvl(file_names_strings[10], number)
-            # detect_q_lvl(file_names_strings[11], number)
-            detect_hp_stat(file_names_strings[12], number)
-            detect_atk_stat(file_names_strings[13], number)
-            detect_def_stat(file_names_strings[14], number)
-            detect_em_stat(file_names_strings[15], number)
-            detect_cr_stat(file_names_strings[16], number)
-            detect_cd_stat(file_names_strings[17], number)
-            detect_er_stat(file_names_strings[18], number)
-        except ValueError:
-            print("imageError" + str(number))
-            old_file_path = folder_path_Enka_2 + "image" + str(number) + png_extension
-            new_file_path = folder_path_errors + "image" + str(number) + png_extension
-            shutil.move(old_file_path, new_file_path)
-
-    detect_text()
+def create_output_images_filepaths(big_iterator):
+    from variables import file_names
+    output_images_filepaths = [None] * len(file_names)
+    for x in range(len(file_names)):
+        output_images_filepaths[x] = folder_path_new + file_names[x] + str(big_iterator) + jpg_extension
+    return output_images_filepaths
 
 
-def crop_Enka_G_Wizard_1(image, number, new_number):
-    file_paths_strings = ["character", "lvl", "nick", "uid",
-                          "bow_name", "artifact", "refinement", "bow_lvl",
-                          "fr_lvl", "aa_lvl", "e_lvl", "q_lvl",
-                          "hp_stat", "atk_stat", "def_stat", "em_stat",
-                          "cr_stat", "cd_stat", "er_stat"]
-    file_names_strings = ["character", "lvl", "nick", "uid",
-                          "bow_name", "artifact", "refinement", "bow_lvl",
-                          "fr_lvl", "aa_lvl", "e_lvl", "q_lvl",
-                          "hp_stat", "atk_stat", "def_stat", "em_stat",
-                          "cr_stat", "cd_stat", "er_stat"]
-    # Creating filepaths for output images
-    for x in range(len(file_paths_strings)):
-        file_paths_strings[x] = folder_path_new + file_paths_strings[x] + str(number) + jpg_extension
-        #print(file_paths_strings[x])
-
-    # Creating names for cropped images and cropping
-    for x in range(len(file_names_strings)):
-        file_names_strings[x] = file_names_strings[x] + str(number)
-        #print(file_names_strings[x])
-        file_names_strings[x] = image[crop_values_G_Wizard_1[x][0]:crop_values_G_Wizard_1[x][1],
-                                crop_values_G_Wizard_1[x][2]:crop_values_G_Wizard_1[x][3]]
-
-    # Saving images
-    for x in range(len(file_paths_strings)):
-        #print(file_paths_strings[x])
-        cv2.imwrite(file_paths_strings[x], file_names_strings[x])
-
-    def detect_text():
-        try:
-            detect_character(file_names_strings[0], number)
-            detect_lvl(file_names_strings[1], number)
-            detect_nick(file_names_strings[2], number)
-            detect_uid(file_names_strings[3], number)
-            detect_bow_name(file_names_strings[4], number)
-            detect_artifact(file_names_strings[5], number)
-            detect_refinement(file_names_strings[6], number)
-            detect_bow_lvl(file_names_strings[7], number)
-            detect_fr_lvl(file_names_strings[8], number)
-            # detect_aa_lvl(file_names_strings[9], number)
-            # detect_e_lvl(file_names_strings[10], number)
-            # detect_q_lvl(file_names_strings[11], number)
-            detect_hp_stat(file_names_strings[12], number)
-            detect_atk_stat(file_names_strings[13], number)
-            detect_def_stat(file_names_strings[14], number)
-            detect_em_stat(file_names_strings[15], number)
-            detect_cr_stat(file_names_strings[16], number)
-            detect_cd_stat(file_names_strings[17], number)
-            detect_er_stat(file_names_strings[18], number)
-        except ValueError:
-            print("imageError" + str(number))
-            old_file_path = folder_path_G_Wizard_1 + "image" + str(new_number) + png_extension
-            new_file_path = folder_path_errors + "image" + str(number) + png_extension
-            shutil.move(old_file_path, new_file_path)
-
-    detect_text()
+def crop_images(image, output_images_filepaths, crop_values):
+    cropped_images = [None] * len(output_images_filepaths)
+    for x in range(len(output_images_filepaths)):
+        cropped_images[x] = image[crop_values[x][0]:crop_values[x][1], crop_values[x][2]:crop_values[x][3]]
+    return cropped_images
 
 
-def crop_Enka_G_Wizard_2(image, number, new_number):
-    file_paths_strings = ["character", "lvl", "nick", "uid",
-                          "bow_name", "artifact", "refinement", "bow_lvl",
-                          "fr_lvl", "aa_lvl", "e_lvl", "q_lvl",
-                          "hp_stat", "atk_stat", "def_stat", "em_stat",
-                          "cr_stat", "cd_stat", "er_stat"]
-    file_names_strings = ["character", "lvl", "nick", "uid",
-                          "bow_name", "artifact", "refinement", "bow_lvl",
-                          "fr_lvl", "aa_lvl", "e_lvl", "q_lvl",
-                          "hp_stat", "atk_stat", "def_stat", "em_stat",
-                          "cr_stat", "cd_stat", "er_stat"]
-    # Creating filepaths for output images
-    for x in range(len(file_paths_strings)):
-        file_paths_strings[x] = folder_path_new + file_paths_strings[x] + str(number) + jpg_extension
+def save_images(output_images_filepaths, cropped_images):
+    for x in range(len(output_images_filepaths)):
+        cv2.imwrite(output_images_filepaths[x], cropped_images[x])
 
-    # Creating names for cropped images and cropping
-    for x in range(len(file_names_strings)):
-        file_names_strings[x] = file_names_strings[x] + str(number)
-        file_names_strings[x] = image[crop_values_G_Wizard_2[x][0]:crop_values_G_Wizard_2[x][1],
-                                crop_values_G_Wizard_2[x][2]:crop_values_G_Wizard_2[x][3]]
 
-    # Saving images
-    for x in range(len(file_paths_strings)):
-        cv2.imwrite(file_paths_strings[x], file_names_strings[x])
+def crop_Enka_2Artifact(image, big_iterator):
+    output_images_filepaths = create_output_images_filepaths(big_iterator)
+    cropped_images = crop_images(image, output_images_filepaths, crop_values_Enka2Artifact)
+    save_images(output_images_filepaths, cropped_images)
+    return cropped_images
 
-    def detect_text():
-        try:
-            detect_character(file_names_strings[0], number)
-            detect_lvl(file_names_strings[1], number)
-            detect_nick(file_names_strings[2], number)
-            detect_uid(file_names_strings[3], number)
-            detect_bow_name(file_names_strings[4], number)
-            detect_artifact(file_names_strings[5], number)
-            detect_refinement(file_names_strings[6], number)
-            detect_bow_lvl(file_names_strings[7], number)
-            detect_fr_lvl(file_names_strings[8], number)
-            # detect_aa_lvl(file_names_strings[9], number)
-            # detect_e_lvl(file_names_strings[10], number)
-            # detect_q_lvl(file_names_strings[11], number)
-            detect_hp_stat(file_names_strings[12], number)
-            detect_atk_stat(file_names_strings[13], number)
-            detect_def_stat(file_names_strings[14], number)
-            detect_em_stat(file_names_strings[15], number)
-            detect_cr_stat(file_names_strings[16], number)
-            detect_cd_stat(file_names_strings[17], number)
-            detect_er_stat(file_names_strings[18], number)
-        except ValueError:
-            print("imageError" + str(number))
-            old_file_path = folder_path_G_Wizard_2 + "image" + str(new_number) + png_extension
-            new_file_path = folder_path_errors + "image" + str(number) + png_extension
-            shutil.move(old_file_path, new_file_path)
 
-    detect_text()
+def crop_Enka_G_Wizard_1(image, big_iterator):
+    output_images_filepaths = create_output_images_filepaths(big_iterator)
+    cropped_images = crop_images(image, output_images_filepaths, crop_values_G_Wizard_1)
+    save_images(output_images_filepaths, cropped_images)
+    return cropped_images
+
+
+def crop_Enka_G_Wizard_2(image, big_iterator):
+    output_images_filepaths = create_output_images_filepaths(big_iterator)
+    cropped_images = crop_images(image, output_images_filepaths, crop_values_G_Wizard_2)
+    save_images(output_images_filepaths, cropped_images)
+    return cropped_images
+
+
+

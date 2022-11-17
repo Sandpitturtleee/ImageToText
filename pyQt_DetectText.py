@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QPushButton
 
-from crop_Functions import rename, delete_files
+from crop_Functions import delete_files
 from writeToFile_Functions import *
 
 from PyQt5.QtWidgets import QPushButton
@@ -15,7 +15,8 @@ class Worker(QObject):
         """Long-running task."""
         delete_files()
         combine()
-        write_to_file2()
+        write_to_file(file_paths_new, image_data_new)
+        clear_lists()
         self.finished.emit()
 
 
