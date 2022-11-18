@@ -1,15 +1,8 @@
-import shutil
-
 import cv2
 import pytesseract
 
-from variables import image_data, png_extension, folder_path_errors
-
-
-def move_files(folder_path, small_iterator, big_iterator):
-    old_file_path = folder_path + "image" + str(small_iterator) + png_extension
-    new_file_path = folder_path_errors + "image" + str(big_iterator) + png_extension
-    shutil.move(old_file_path, new_file_path)
+from detect_text_files.supporting_functions import move_files
+from variables import image_data
 
 
 def detect_text(cropped_image, folder_path, small_iterator, big_iterator):

@@ -1,10 +1,9 @@
-from PyQt5.QtWidgets import QWidget, QPushButton
-
-from crop_Functions import *
-from writeToFile_Functions import *
-
+from PyQt5.QtWidgets import QWidget
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtCore import QObject, QThread, pyqtSignal
+
+from detect_text_files.crop_functions import combine_crop_and_and_rename_functions
+from detect_text_files.supporting_functions import delete_new_images, clear_lists
 
 
 class Worker(QObject):
