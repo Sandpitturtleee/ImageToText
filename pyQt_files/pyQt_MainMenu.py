@@ -1,6 +1,6 @@
 
-from pyQt_DetectText import DetectTextWindow
-from pyQt_DetectErrors import DetectErrorsWindow
+from pyQt_files.pyQt_DetectText import DetectTextWindow
+from pyQt_files.pyQt_DetectErrors import DetectErrorsWindow
 from PyQt5.QtWidgets import QMainWindow, QPushButton
 
 

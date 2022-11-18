@@ -4,9 +4,9 @@ from natsort import natsorted
 
 from detectText_Functions import *
 
-from variables import folder_path_new, jpg_extension, png_extension, crop_values_Enka2Artifact, \
-    image_data_new, folder_path_Enka_2, folder_path_errors, folder_path_Enka_1, folder_path_G_Wizard_1, \
-    crop_values_G_Wizard_1, folder_path_G_Wizard_2, crop_values_G_Wizard_2
+from variables import folder_path_new, jpg_extension, png_extension, crop_values_enka, \
+    image_data_new, folder_path_enka, folder_path_errors, folder_path_wizard1, \
+    crop_values_wizard1, folder_path_wizard2, crop_values_wizard2
 
 
 def rename_files(folder_path):
@@ -18,7 +18,7 @@ def rename_files(folder_path):
         count += 1
 
 
-def delete_files():
+def delete_new_images():
     for file_name in os.listdir(folder_path_new):
         source = folder_path_new + file_name
         os.remove(source)
@@ -49,23 +49,23 @@ def save_images(output_images_filepaths, cropped_images):
         cv2.imwrite(output_images_filepaths[x], cropped_images[x])
 
 
-def crop_Enka_2Artifact(image, big_iterator):
+def crop_image_enka(image, big_iterator):
     output_images_filepaths = create_output_images_filepaths(big_iterator)
-    cropped_images = crop_images(image, output_images_filepaths, crop_values_Enka2Artifact)
+    cropped_images = crop_images(image, output_images_filepaths, crop_values_enka)
     save_images(output_images_filepaths, cropped_images)
     return cropped_images
 
 
-def crop_Enka_G_Wizard_1(image, big_iterator):
+def crop_image_wizard1(image, big_iterator):
     output_images_filepaths = create_output_images_filepaths(big_iterator)
-    cropped_images = crop_images(image, output_images_filepaths, crop_values_G_Wizard_1)
+    cropped_images = crop_images(image, output_images_filepaths, crop_values_wizard1)
     save_images(output_images_filepaths, cropped_images)
     return cropped_images
 
 
-def crop_Enka_G_Wizard_2(image, big_iterator):
+def crop_image_wizard2(image, big_iterator):
     output_images_filepaths = create_output_images_filepaths(big_iterator)
-    cropped_images = crop_images(image, output_images_filepaths, crop_values_G_Wizard_2)
+    cropped_images = crop_images(image, output_images_filepaths, crop_values_wizard2)
     save_images(output_images_filepaths, cropped_images)
     return cropped_images
 

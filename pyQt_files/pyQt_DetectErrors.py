@@ -13,7 +13,8 @@ class Worker(QObject):
 
     def run(self):
         """Long-running task."""
-        combine()
+        delete_new_images()
+        combine_crop_and_and_rename_functions()
         clear_lists()
         self.finished.emit()
 
