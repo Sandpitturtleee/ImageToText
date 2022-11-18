@@ -16,7 +16,7 @@ class Worker(QObject):
         delete_new_images()
         combine_crop_and_and_rename_functions()
         write_data_to_file(file_paths_new, image_data_new)
-        clear_lists()
+        clear_lists(image_data_new)
         self.finished.emit()
 
 

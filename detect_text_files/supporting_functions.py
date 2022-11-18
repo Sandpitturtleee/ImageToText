@@ -50,9 +50,9 @@ def write_data_to_file(file_names, data_from_images):
                 f.write("%s\n" % data_from_images[x][y])
 
 
-def clear_lists():
-    for f in range(len(image_data_new)):
-        image_data_new[f].clear()
+def clear_lists(data_from_images):
+    for f in range(len(data_from_images)):
+        data_from_images[f].clear()
 
 
 
