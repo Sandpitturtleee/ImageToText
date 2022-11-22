@@ -4,7 +4,7 @@ import cv2
 from natsort import natsorted
 
 from variables import jpg_extension, png_extension, folder_path_errors, folder_path_new, image_data, folder_path_data, \
-    image_data_new, file_names
+    file_names
 
 
 def move_files(folder_path, small_iterator, big_iterator):
@@ -45,7 +45,7 @@ def write_data_to_file(data_from_images):
     length = len(image_data[12])
     for x in range(len(output_txt_filepaths)):
         output_txt_filepaths[x] = folder_path_data + file_names[x] + ".txt"
-        with open(output_txt_filepaths[x], 'w') as f:
+        with open(output_txt_filepaths[x], 'w', encoding='utf-8') as f:
             for y in range(length):
                 f.write("%s\n" % data_from_images[x][y])
 
