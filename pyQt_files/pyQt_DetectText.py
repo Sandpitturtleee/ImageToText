@@ -15,8 +15,8 @@ class Worker(QObject):
         """Long-running task."""
         delete_new_images()
         combine_crop_and_and_rename_functions()
-        write_data_to_file(file_names, image_data)
-        clear_lists(image_data_new)
+        write_data_to_file(image_data)
+        clear_lists(image_data)
         self.finished.emit()
 
 
