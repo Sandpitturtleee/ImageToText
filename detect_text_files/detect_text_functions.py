@@ -16,9 +16,9 @@ def detect_text(cropped_image, folder_path, small_iterator, big_iterator):
         detect_refinement(cropped_image[6], big_iterator)
         detect_bow_lvl(cropped_image[7], big_iterator)
         detect_fr_lvl(cropped_image[8], big_iterator)
-        # detect_aa_lvl(cropped_image[9], big_iterator)
-        # detect_e_lvl(cropped_image[10], big_iterator)
-        # detect_q_lvl(cropped_image[11], big_iterator)
+        detect_aa_lvl(cropped_image[9], big_iterator)
+        detect_e_lvl(cropped_image[10], big_iterator)
+        detect_q_lvl(cropped_image[11], big_iterator)
         detect_hp_stat(cropped_image[12], big_iterator)
         detect_atk_stat(cropped_image[13], big_iterator)
         detect_def_stat(cropped_image[14], big_iterator)
@@ -124,38 +124,47 @@ def detect_fr_lvl(image, big_iterator):
 
 
 def detect_aa_lvl(image, big_iterator):
-    image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
-    data = pytesseract.image_to_string(image, lang='eng',
-                                       config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    aa_lvl = int(data)
-    if aa_lvl < 1 or aa_lvl > 10:
+    try:
+        image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+        data = pytesseract.image_to_string(image, lang='eng',
+                                           config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
+        aa_lvl = int(data)
+        if aa_lvl < 1 or aa_lvl > 10:
+            image_data[9].append("aa_lvl" + str(big_iterator))
+        else:
+            image_data[9].append(aa_lvl)
+    except ValueError:
         image_data[9].append("aa_lvl" + str(big_iterator))
-    else:
-        image_data[9].append(aa_lvl)
     return image_data[9]
 
 
 def detect_e_lvl(image, big_iterator):
-    image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
-    data = pytesseract.image_to_string(image, lang='eng',
-                                       config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    e_lvl = int(data)
-    if e_lvl < 1 or e_lvl > 13:
+    try:
+        image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+        data = pytesseract.image_to_string(image, lang='eng',
+                                           config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
+        e_lvl = int(data)
+        if e_lvl < 1 or e_lvl > 13:
+            image_data[10].append("e_lvl" + str(big_iterator))
+        else:
+            image_data[10].append(e_lvl)
+    except ValueError:
         image_data[10].append("e_lvl" + str(big_iterator))
-    else:
-        image_data[10].append(e_lvl)
     return image_data[10]
 
 
 def detect_q_lvl(image, big_iterator):
-    image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
-    data = pytesseract.image_to_string(image, lang='eng',
-                                       config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
-    q_lvl = int(data)
-    if q_lvl < 1 or q_lvl > 13:
+    try:
+        image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+        data = pytesseract.image_to_string(image, lang='eng',
+                                           config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
+        q_lvl = int(data)
+        if q_lvl < 1 or q_lvl > 13:
+            image_data[11].append("q_lvl" + str(big_iterator))
+        else:
+            image_data[11].append(q_lvl)
+    except ValueError:
         image_data[11].append("q_lvl" + str(big_iterator))
-    else:
-        image_data[11].append(q_lvl)
     return image_data[11]
 
 

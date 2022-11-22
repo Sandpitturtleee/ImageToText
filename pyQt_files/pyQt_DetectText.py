@@ -4,7 +4,7 @@ from PyQt5.QtCore import QObject, QThread, pyqtSignal
 
 from detect_text_files.crop_functions import combine_crop_and_and_rename_functions
 from detect_text_files.supporting_functions import delete_new_images, write_data_to_file, clear_lists
-from variables import file_paths_new, image_data_new
+from variables import file_paths_new, image_data_new, image_data, file_names
 
 
 class Worker(QObject):
@@ -15,7 +15,7 @@ class Worker(QObject):
         """Long-running task."""
         delete_new_images()
         combine_crop_and_and_rename_functions()
-        write_data_to_file(file_paths_new, image_data_new)
+        write_data_to_file(file_names, image_data)
         clear_lists(image_data_new)
         self.finished.emit()
 
