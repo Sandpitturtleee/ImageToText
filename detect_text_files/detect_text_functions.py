@@ -46,7 +46,7 @@ def detect_lvl(image, big_iterator):
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     lvl = int(data)
-    if lvl < 10:
+    if 10 > lvl > 90:
         image_data[1].append("lvl" + str(big_iterator))
     else:
         image_data[1].append(lvl)
@@ -106,7 +106,7 @@ def detect_bow_lvl(image, big_iterator):
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     bow_lvl = int(data)
-    if bow_lvl < 10:
+    if 1 > bow_lvl > 90:
         image_data[7].append("bow_lvl" + str(big_iterator))
     else:
         image_data[7].append(bow_lvl)
@@ -118,7 +118,7 @@ def detect_fr_lvl(image, big_iterator):
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     fr_lvl = int(data)
-    if fr_lvl < 1:
+    if 1 > fr_lvl > 10:
         image_data[8].append("fr_lvl" + str(big_iterator))
     else:
         image_data[8].append(fr_lvl)
@@ -211,7 +211,7 @@ def detect_em_stat(image, big_iterator):
     data = pytesseract.image_to_string(image, lang='eng',
                                        config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
     em_stat = int(data)
-    if em_stat < 10:
+    if em_stat < 10 or em_stat > 2000:
         image_data[15].append("em_stat" + str(big_iterator))
     else:
         image_data[15].append(em_stat)
