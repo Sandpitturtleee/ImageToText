@@ -26,6 +26,8 @@ def detect_text(cropped_image, folder_path, small_iterator, big_iterator):
         detect_cr_stat(cropped_image[16], big_iterator)
         detect_cd_stat(cropped_image[17], big_iterator)
         detect_er_stat(cropped_image[18], big_iterator)
+        detect_element_type(cropped_image[19], big_iterator)
+        detect_element_value(cropped_image[20], big_iterator)
     except ValueError:
         print("imageError" + str(big_iterator))
         move_files(folder_path, small_iterator, big_iterator)
@@ -250,3 +252,23 @@ def detect_er_stat(image, big_iterator):
     else:
         image_data[18].append(er_stat)
     return image_data[18]
+
+
+def detect_element_type(image, big_iterator):
+    image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+    data = pytesseract.image_to_string(image, lang='eng', config='--psm 6 --oem 3')
+    element_type = str(data)
+    image_data[19].append(element_type)
+    return image_data[19]
+
+
+def detect_element_value(image, big_iterator):
+    image = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+    data = pytesseract.image_to_string(image, lang='eng',
+                                       config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789.')
+    element_value = float(data)
+    if element_value < 10:
+        image_data[20].append("element_value" + str(big_iterator))
+    else:
+        image_data[20].append(element_value)
+    return image_data[20]

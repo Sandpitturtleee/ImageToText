@@ -4,7 +4,7 @@ from PyQt5.QtCore import QObject, QThread, pyqtSignal
 
 from detect_text_files.crop_functions import combine_crop_and_and_rename_functions
 from detect_text_files.supporting_functions import delete_new_images, clear_lists
-from variables import image_data_new, image_data
+from variables import image_data
 
 
 class Worker(QObject):
