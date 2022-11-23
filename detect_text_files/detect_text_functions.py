@@ -263,7 +263,9 @@ def detect_em_stat(image, big_iterator, error):
         data = pytesseract.image_to_string(image, lang='eng',
                                            config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
         em_stat = int(data)
-        if em_stat < 10 or em_stat > 2000:
+        if em_stat > 2000:
+            image_data[15].append(0)
+        elif em_stat < 10:
             image_data[15].append("em_stat" + str(big_iterator))
         else:
             image_data[15].append(em_stat)
