@@ -108,7 +108,7 @@ def detect_artifact(image, big_iterator, error):
         artifact = str(data)
         image_data[5].append(artifact)
     except ValueError:
-        image_data[5].append("artifact" + str(big_iterator))
+        image_data[5].append("artifact_" + str(big_iterator))
         error += 1
     return error
 
@@ -135,7 +135,7 @@ def detect_bow_lvl(image, big_iterator, error):
         data = pytesseract.image_to_string(image, lang='eng',
                                            config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
         bow_lvl = int(data)
-        if 1 > bow_lvl > 90:
+        if bow_lvl > 90 or bow_lvl < 10:
             image_data[7].append("bow_lvl" + str(big_iterator))
         else:
             image_data[7].append(bow_lvl)
@@ -183,7 +183,7 @@ def detect_e_lvl(image, big_iterator, error):
         data = pytesseract.image_to_string(image, lang='eng',
                                            config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
         e_lvl = int(data)
-        if e_lvl < 1 or e_lvl > 13:
+        if e_lvl < 4 or e_lvl > 13:
             image_data[10].append("e_lvl" + str(big_iterator))
         else:
             image_data[10].append(e_lvl)
@@ -199,7 +199,7 @@ def detect_q_lvl(image, big_iterator, error):
         data = pytesseract.image_to_string(image, lang='eng',
                                            config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789')
         q_lvl = int(data)
-        if q_lvl < 1 or q_lvl > 13:
+        if q_lvl < 4 or q_lvl > 13:
             image_data[11].append("q_lvl" + str(big_iterator))
         else:
             image_data[11].append(q_lvl)
@@ -281,7 +281,7 @@ def detect_cr_stat(image, big_iterator, error):
         data = pytesseract.image_to_string(image, lang='eng',
                                            config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789.')
         cr_stat = float(data)
-        if cr_stat < 10:
+        if cr_stat < 10 or cr_stat > 200:
             image_data[16].append("cr_stat" + str(big_iterator))
         else:
             image_data[16].append(cr_stat)
@@ -297,7 +297,7 @@ def detect_cd_stat(image, big_iterator, error):
         data = pytesseract.image_to_string(image, lang='eng',
                                            config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789.')
         cd_stat = float(data)
-        if cd_stat < 50:
+        if cd_stat < 50 or cd_stat > 300:
             image_data[17].append("cd_stat" + str(big_iterator))
         else:
             image_data[17].append(cd_stat)
@@ -313,7 +313,7 @@ def detect_er_stat(image, big_iterator, error):
         data = pytesseract.image_to_string(image, lang='eng',
                                            config='--psm 6 --oem 3 -c tessedit_char_whitelist=0123456789.')
         er_stat = float(data)
-        if er_stat < 100:
+        if er_stat < 100 or er_stat > 400:
             image_data[18].append("er_stat" + str(big_iterator))
         else:
             image_data[18].append(er_stat)
