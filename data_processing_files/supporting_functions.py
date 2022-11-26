@@ -1,5 +1,5 @@
-from variables import bow_name_file_path, element_type_file_path, refinement_file_path, element_value_file_path, \
-    artifact_file_path, bow_name, refinement, element_type, element_value, artifact
+from data_processing_files.variables import bow_name_file_path, refinement_file_path, element_type_file_path, \
+    element_value_file_path, artifact_file_path, bow_name, refinement, element_type, element_value, artifact
 
 
 def read_values():
@@ -13,7 +13,8 @@ def read_values():
 def read_bow_name():
     with open(bow_name_file_path) as file:
         for line in file:
-            bow_name.append(line)
+            if len(line) > 2:
+                bow_name.append(line)
 
 
 def read_refinement():
@@ -25,7 +26,8 @@ def read_refinement():
 def read_element_type():
     with open(element_type_file_path) as file:
         for line in file:
-            element_type.append(line)
+            if len(line) > 2:
+                element_type.append(line)
 
 
 def read_element_value():
