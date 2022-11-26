@@ -2,7 +2,7 @@ import cv2
 import pytesseract
 
 from detect_text_files.supporting_functions import move_files
-from variables import image_data
+from detect_text_files.variables import image_data
 
 
 def detect_text(cropped_image, folder_path, small_iterator, big_iterator):

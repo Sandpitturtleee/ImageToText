@@ -6,7 +6,7 @@ from pytesseract import pytesseract
 from detect_text_files.detect_text_functions import detect_text
 from detect_text_files.supporting_functions import delete_new_images, rename_files, create_output_images_filepaths, \
     save_images
-from variables import folder_path_enka1, folder_path_wizard1, folder_path_wizard2, crop_values_enka1, \
+from detect_text_files.variables import folder_path_enka1, folder_path_wizard1, folder_path_wizard2, crop_values_enka1, \
     crop_values_wizard1, crop_values_wizard2, folder_path_enka2, crop_values_enka2
 
 

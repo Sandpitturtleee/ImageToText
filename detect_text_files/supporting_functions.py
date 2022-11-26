@@ -3,7 +3,7 @@ import shutil
 import cv2
 from natsort import natsorted
 
-from variables import jpg_extension, png_extension, folder_path_errors, folder_path_new, image_data, folder_path_data, \
+from detect_text_files.variables import jpg_extension, png_extension, folder_path_errors, folder_path_new, image_data, folder_path_data, \
     file_names
 
 

@@ -12,12 +12,6 @@ folder_path_wizard2 = "D:/projectFiles/Images/G_Wizard_2/"
 folder_path_new = "D:/projectFiles/Images/New/"
 folder_path_errors = "D:/projectFiles/Images/Errors/"
 
-bow_name_file_path = "D:/projectFiles/Data/bow_name.txt"
-refinement_file_path = "D:/projectFiles/Data/refinement.txt"
-element_type_file_path = "D:/projectFiles/Data/element_type.txt"
-element_value_file_path = "D:/projectFiles/Data/element_value.txt"
-artifact_file_path = "D:/projectFiles/Data/artifact.txt"
-
 jpg_extension = '.jpg'
 png_extension = '.png'
 
@@ -26,7 +20,7 @@ lvl = []
 nick = []
 uid = []
 bow_name = []
-artifact= []
+artifact = []
 refinement = []
 bow_lvl = []
 fr_lvl = []
