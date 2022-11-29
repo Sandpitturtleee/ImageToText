@@ -1,6 +1,6 @@
 from data_processing_files.supporting_functions import search_index
 from data_processing_files.variables import unique_bow, unique_element, unique_artifact, refinements_bows, bow_name, \
-    element_type, artifact, refinement, values_elements, element_value
+    element_type, artifact, refinement, values_elements, element_value, unique_artifact_count
 
 
 # for i in range(len(refinements_bows)):
@@ -11,23 +11,19 @@ from data_processing_files.variables import unique_bow, unique_element, unique_a
 def create_unique_names():
     create_unique_bow()
     create_unique_element()
-    #create_unique_artifact()
+    create_unique_artifact()
 
 
 def create_unique_bow():
     for item in bow_name:
         if item not in unique_bow:
             unique_bow.append(item)
-    for x in range(len(unique_bow)):
-        print(unique_bow[x])
 
 
 def create_unique_element():
     for item in element_type:
         if item not in unique_element:
             unique_element.append(item)
-    for x in range(len(unique_element)):
-        print(unique_element[x])
 
 
 def create_unique_artifact():
@@ -55,4 +51,10 @@ def group_dmg_bonuses():
         values_elements[index].append(element_value[x])
 
 
+def count_artifacts():
+    for x in range(len(unique_artifact)):
+        unique_artifact_count.append(0)
+    for x in range(len(artifact)):
+        index = (search_index(unique_artifact, artifact[x]))
+        unique_artifact_count[index] += 1
 

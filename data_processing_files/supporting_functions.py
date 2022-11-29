@@ -1,5 +1,8 @@
+from itertools import groupby
+
 from data_processing_files.variables import bow_name_file_path, refinement_file_path, element_type_file_path, \
-    element_value_file_path, artifact_file_path, bow_name, refinement, element_type, element_value, artifact
+    element_value_file_path, artifact_file_path, bow_name, refinement, element_type, element_value, artifact, \
+    unique_artifact_count
 
 
 def read_values():
@@ -49,9 +52,13 @@ def read_element_value():
 
 
 def read_artifact():
+    temp = []
     with open(artifact_file_path) as file:
         for line in file:
-            artifact.append(line)
+            if len(line) > 2:
+                temp.append(line)
+    for sub in temp:
+        artifact.append(sub.replace("\n", ""))
 
 
 def search_index(arr, x):
@@ -69,3 +76,10 @@ def write_data_to_file(folder_path, file_names, data):
         with open(output_txt_filepaths[x], 'w', encoding='utf-8') as f:
             for y in range(length):
                 f.write("%s\n" % data[x][y])
+
+
+def write_artifact_to_file(folder_path, data):
+    output_txt_filepath = folder_path + "Artifacts" + ".txt"
+    with open(output_txt_filepath, 'w', encoding='utf-8') as f:
+        for x in range(len(unique_artifact_count)):
+            f.write("%s\n" % data[x])
