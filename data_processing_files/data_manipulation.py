@@ -1,12 +1,20 @@
 from data_processing_files.supporting_functions import search_index
 from data_processing_files.variables import unique_bow, unique_element, unique_artifact, refinements_bows, bow_name, \
-    element_type, artifact, refinement, values_elements, element_value, unique_artifact_count
+    element_type, artifact, refinement, values_elements, element_value, unique_artifact_count, unique_bow_count
 
 
 # for i in range(len(refinements_bows)):
 # length = len(refinements_bows[i])
 # for j in range(length):
 # print(refinements_bows[i][j])
+
+def data_processing():
+    create_unique_names()
+    group_refinements()
+    group_dmg_bonuses()
+    count_artifacts()
+    count_bows()
+
 
 def create_unique_names():
     create_unique_bow()
@@ -30,9 +38,6 @@ def create_unique_artifact():
     for item in artifact:
         if item not in unique_artifact:
             unique_artifact.append(item)
-    for x in range(len(unique_artifact)):
-        print(unique_artifact[x])
-        print()
 
 
 def group_refinements():
@@ -58,3 +63,10 @@ def count_artifacts():
         index = (search_index(unique_artifact, artifact[x]))
         unique_artifact_count[index] += 1
 
+
+def count_bows():
+    for x in range(len(unique_bow)):
+        unique_bow_count.append(0)
+    for x in range(len(bow_name)):
+        index = (search_index(unique_bow, bow_name[x]))
+        unique_bow_count[index] += 1
