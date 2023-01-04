@@ -1,5 +1,3 @@
-from itertools import groupby
-
 from data_processing_files.variables import bow_name_file_path, refinement_file_path, element_type_file_path, \
     element_value_file_path, artifact_file_path, bow_name, refinement, element_type, element_value, artifact, \
     unique_artifact_count, unique_artifact, unique_bow, unique_bow_count, folder_path_data_bows, refinements_bows, \

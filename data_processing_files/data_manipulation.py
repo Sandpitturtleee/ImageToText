@@ -3,11 +3,6 @@ from data_processing_files.variables import unique_bow, unique_element, unique_a
     element_type, artifact, refinement, values_elements, element_value, unique_artifact_count, unique_bow_count
 
 
-# for i in range(len(refinements_bows)):
-# length = len(refinements_bows[i])
-# for j in range(length):
-# print(refinements_bows[i][j])
-
 def data_processing():
     create_unique_names()
     group_refinements()
