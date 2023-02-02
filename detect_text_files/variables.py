@@ -36,6 +36,7 @@ cd_stat = []
 er_stat = []
 element_type = []
 element_value = []
+error_images = []
 
 image_data = [character, lvl, nick, uid,
               bow_name, artifact, refinement, bow_lvl,

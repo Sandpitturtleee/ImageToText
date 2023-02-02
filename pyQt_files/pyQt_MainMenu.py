@@ -11,9 +11,9 @@ from data_processing_files.data_manipulation import data_processing
 from data_processing_files.supporting_functions import read_values, write_to_files
 from detect_text_files.crop_functions import combine_crop_and_and_rename_functions
 from detect_text_files.supporting_functions import delete_new_images, write_data_to_file, clear_lists
-from detect_text_files.variables import image_data
+from detect_text_files.variables import image_data, error_images
 from PyQt5.QtWidgets import QWidget
-from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtWidgets import QPushButton, QMessageBox
 from PyQt5.QtCore import QObject, QThread, pyqtSignal
 
 from detect_text_files.crop_functions import combine_crop_and_and_rename_functions
@@ -75,6 +75,17 @@ class MainMenuWindow(QMainWindow):
         self.processDataButton.clicked.connect(lambda: write_to_files())
         self.processDataButton.setEnabled(False)
 
+    def warning_msg(self):
+        QMessageBox.information(self, "Error", "Errors images detected and moved to errors Folder")
+
+    def check_errors(self):
+        if len(error_images) > 0:
+            self.warning_msg()
+            error_images.clear()
+        else:
+            self.detectTextButton.setEnabled(True)
+            error_images.clear()
+
     def detect_errors(self):
         self.thread = QThread()
         self.worker = DetectErrorsWorker()
@@ -87,10 +98,7 @@ class MainMenuWindow(QMainWindow):
 
         self.detectErrorsButton.setEnabled(False)
         self.thread.finished.connect(
-            lambda: self.detectErrorsButton.setEnabled(True)
-        )
-        self.thread.finished.connect(
-            lambda: self.detectTextButton.setEnabled(True)
+            lambda: self.check_errors()
         )
 
     def detect_text(self):
@@ -105,9 +113,6 @@ class MainMenuWindow(QMainWindow):
 
         # Final resets
         self.detectTextButton.setEnabled(False)
-        self.thread.finished.connect(
-            lambda: self.detectTextButton.setEnabled(True)
-        )
         self.thread.finished.connect(
             lambda: self.processDataButton.setEnabled(True)
         )

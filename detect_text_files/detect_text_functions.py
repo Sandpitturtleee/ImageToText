@@ -2,7 +2,7 @@ import cv2
 import pytesseract
 
 from detect_text_files.supporting_functions import move_files
-from detect_text_files.variables import image_data
+from detect_text_files.variables import image_data, error_images
 
 
 def detect_text(cropped_image, folder_path, small_iterator, big_iterator):
@@ -30,6 +30,7 @@ def detect_text(cropped_image, folder_path, small_iterator, big_iterator):
     error = detect_element_value(cropped_image[20], big_iterator, error)
     if error > 4:
         print("imageError" + str(big_iterator))
+        error_images.append("imageError" + str(big_iterator))
         move_files(folder_path, small_iterator, big_iterator)
 
 
