@@ -1,23 +1,13 @@
-
-from pyQt_files.pyQt_DetectText import DetectTextWindow
-from pyQt_files.pyQt_DetectErrors import DetectErrorsWindow
-from PyQt5.QtWidgets import QMainWindow, QPushButton
-
-from PyQt5.QtWidgets import QWidget
-from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtCore import QObject, QThread, pyqtSignal
+from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QPushButton, QMessageBox
 
 from data_processing_files.data_manipulation import data_processing
 from data_processing_files.supporting_functions import read_values, write_to_files
 from detect_text_files.crop_functions import combine_crop_and_and_rename_functions
-from detect_text_files.supporting_functions import delete_new_images, write_data_to_file, clear_lists
-from detect_text_files.variables import image_data, error_images
-from PyQt5.QtWidgets import QWidget
-from PyQt5.QtWidgets import QPushButton, QMessageBox
-from PyQt5.QtCore import QObject, QThread, pyqtSignal
-
-from detect_text_files.crop_functions import combine_crop_and_and_rename_functions
-from detect_text_files.supporting_functions import delete_new_images, clear_lists
+from detect_text_files.supporting_functions import clear_lists
+from detect_text_files.supporting_functions import write_data_to_file
+from detect_text_files.variables import error_images
 from detect_text_files.variables import image_data
 
 
